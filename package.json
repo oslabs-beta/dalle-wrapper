@@ -1,5 +1,5 @@
 {
-  "name": "dall-e wrapper",
+  "name": "dall-e-wrapper",
   "version": "1.0.0",
   "description": "test dall-e wrapper",
   "main": "index.js",
@@ -38,5 +38,6 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "webpack": "^5.94.0"
-  }
+  },
+  "keywords": []
 }
