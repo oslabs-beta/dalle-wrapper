@@ -5,26 +5,26 @@ const api_key = process.env.OPENAI_API_KEY;
 function App() {
   const [promptState, updatePrompt] = useState('Type a Prompt');
   const [imageUrlState, setImageUrl] = useState(
-    'https://upload.wikimedia.org/wikipedia/commons/7/79/M%C3%B6bius_Strip.jpg'
-  );
+    'https://upload.wikimedia.org/wikipedia/commons/7/79/M%C3%B6bius_Strip.jpg');
 
-  const dalle = async () => {
-    const url = 'https://api.openai.com/v1/images/generations';
-    const response = await fetch(url, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${api_key}`,
-      },
-      body: JSON.stringify({
-        prompt: promptState,
-        n: 1,
-        size: '1024x1024',
-      }),
-    });
-    const data = await response.json();
-    console.log(data);
-    setImageUrl(data.data[0].url);
+  const generateImage = async () => {
+    try {
+      const response = await fetch('http://localhost:3000/generate-image', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          prompt: promptState,
+        }),
+      });
+
+      const data = await response.json();
+      console.log(data);
+      setImageUrl(data.imageUrl);
+    } catch (error) {
+      console.error('Error generating image:', error);
+    }
   };
 
   return (
@@ -36,7 +36,7 @@ function App() {
         value={promptState}
         onChange={(e) => updatePrompt(e.target.value)}
       ></input>
-      <button onClick={dalle}>submit</button>
+      <button onClick={generateImage}>submit</button>
     </>
   );
 }
