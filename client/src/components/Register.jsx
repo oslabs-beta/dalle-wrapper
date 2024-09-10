@@ -19,7 +19,7 @@ const Register = () => {
 
         const data = await response.json();
         if (data.message === 'User registered successfully') {
-            navigate('/login');
+            navigate('/img');
         } else {
             alert('Error registering user');
         }

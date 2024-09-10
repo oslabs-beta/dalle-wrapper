@@ -3,23 +3,21 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-d
 import App from './App';
 import Login from './Login';
 import Register from './Register';
-import { useAuth } from './AuthContext';
+import ImageGenerator from './ImageGenerator';
 
-function PrivateRoute({ children }) {
-    const { user } = useAuth();
-    return user ? children : <Navigate to="/login" />;
-}
 
 const AppRouter = () => {
     return (
         <Router>
             <Routes>
-                <Route path="/" element={<PrivateRoute><App /></PrivateRoute>} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/register" element={<Register />} />
+                <Route path="/" element={< Login />} />
+                <Route path="/login" element={<Register />} />
+                <Route path="/img" element={<ImageGenerator />} />
             </Routes>
         </Router>
     );
 };
 
 export default AppRouter;
+
+
