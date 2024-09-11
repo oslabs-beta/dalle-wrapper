@@ -21,7 +21,7 @@ const Login = () => {
         const data = await response.json();
         if (data.token) {
             login(data.token);
-            navigate('/img');
+            navigate('/App');
         } else {
             alert('Invalid credentials');
         }

@@ -24,7 +24,7 @@ const ImageGenerator = () => {
 
     return (
         <div>
-            <h2>Welcome to tha Wrapper</h2>
+            <h2>{ prompt }</h2>
             <input
                 type="text"
                 value={prompt}
