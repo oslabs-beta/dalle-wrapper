@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 const ImageGenerator = () => {
     const [prompt, setPrompt] = useState('');
-    const [imageUrl, setImageUrl] = useState('');
+    const [imageUrl, setImageUrl] = useState('https://upload.wikimedia.org/wikipedia/commons/7/79/M%C3%B6bius_Strip.jpg');
 
     const generateImage = async () => {
         try {
@@ -13,7 +13,7 @@ const ImageGenerator = () => {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`,
                 },
-                body: JSON.stringify({ prompt, api_name: 'A' }),
+                body: JSON.stringify({ prompt }),
             });
             const data = await response.json();
             setImageUrl(data.imageUrl);
@@ -24,7 +24,7 @@ const ImageGenerator = () => {
 
     return (
         <div>
-            <h2>Generate an Image</h2>
+            <h2>Welcome to tha Wrapper</h2>
             <input
                 type="text"
                 value={prompt}
@@ -32,7 +32,9 @@ const ImageGenerator = () => {
                 placeholder="Enter prompt"
             />
             <button onClick={generateImage}>Generate</button>
-            {imageUrl && <img src={imageUrl} alt="Generated" />}
+            <div>
+                <img src={imageUrl} width="512" />
+            </div>
         </div>
     );
 };
