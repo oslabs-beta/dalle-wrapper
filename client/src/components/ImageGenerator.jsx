@@ -13,12 +13,17 @@ const ImageGenerator = () => {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`,
                 },
-                body: JSON.stringify({ prompt }),
+                body: JSON.stringify({
+                    prompt,
+                    useTimeBasedTier: false // if ommitted will use budget based, as if false 
+                }),
             });
             const data = await response.json();
-            setImageUrl(data.imageUrl);
+            setImageUrl(data.data[0].url);
+            console.log('OpenAI response:', data);
+            console.log('tier used:', data.tier);
         } catch (error) {
-            console.error('Error generating image:', error);
+            console.error('error generating image:', error);
         }
     };
 
