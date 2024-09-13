@@ -7,7 +7,7 @@ const ImageGenerator = () => {
     const generateImage = async () => {
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch('http://localhost:3000/generate-image', {
+            const response = await fetch('http://localhost:2024/generate-image', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
