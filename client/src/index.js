@@ -1,15 +1,11 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-// import { createTheme } from '@mui/material/styles';
-import App from './components/App.jsx';
-
-//const theme = createTheme();
+import { AuthProvider } from './components/AuthContext'; // Import AuthProvider
+import AppRouter from './components/AppRouter'; // Import the router
 
 const root = createRoot(document.getElementById('root'));
 root.render(
-  
-<React.StrictMode>
-  <App />
-</React.StrictMode>
-  
+    <AuthProvider>
+      <AppRouter /> 
+    </AuthProvider>
 );
