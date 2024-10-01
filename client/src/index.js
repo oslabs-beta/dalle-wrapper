@@ -5,7 +5,9 @@ import AppRouter from './components/AppRouter'; // Import the router
 
 const root = createRoot(document.getElementById('root'));
 root.render(
-    <AuthProvider>
-      <AppRouter /> 
-    </AuthProvider>
+  <App.jsx/>
+  
+    // <AuthProvider>
+    //   <AppRouter /> 
+    // </AuthProvider>
 );
