@@ -7,7 +7,8 @@ const ImageGenerator = () => {
     const generateImage = async () => {
         try {
             const token = process.env.OPENAI_API_KEY
-            const response = await fetch('https://api.openai.com/v1/images/generations', {
+            const response = await fetch('http://localhost:2024/generate-image', {
+                //const response = await fetch('https://api.openai.com/v1/images/generations', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -15,13 +16,13 @@ const ImageGenerator = () => {
                 },
                 body: JSON.stringify({
                     prompt,
-                    //useTimeBasedTier: false // if ommitted will use budget based, as if false 
+                //   useTimeBasedTier: false // if ommitted will use budget based, as if false 
                 }),
             });
             const data = await response.json();
             console.log('OpenAI response:', data);
             console.log('tier used:', data.tier);
-            //setImageUrl(data.data[0].url);
+            setImageUrl(data.data[0].url);
         } catch (error) {
             console.error('error generating image:', error);
         }
